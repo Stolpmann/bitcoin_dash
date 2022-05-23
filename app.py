@@ -14,7 +14,12 @@ colors = {
 }
 
 df = pd.read_csv ('clean_block_data.csv')
+supply = pd.read_csv('supply.csv')
 print(df)
+
+bitcoin_supply =[supply['issuance_remaining'][0], int(supply['total_amount'][0])]
+
+bitcoin_supply_titles = ['issuance_remaining', 'Circulating_supply']
 
 # assume you have a "long-form" data frame
 # see https://plotly.com/python/px-arguments/ for more options
@@ -28,12 +33,23 @@ fig2 = px.line(df, x="height", y="txs", title='Bitcoin Transactions')
 
 fig2.update_traces(line_color='#FF9900', line_width=3)
 
+fig3 = go.Figure(data=[go.Pie(labels=bitcoin_supply_titles, values=bitcoin_supply)])
+
+
+
+
 fig1.update_layout(
     plot_bgcolor=colors['background'],
     paper_bgcolor=colors['background'],
     font_color=colors['text']
 )
 fig2.update_layout(
+    plot_bgcolor=colors['background'],
+    paper_bgcolor=colors['background'],
+    font_color=colors['text']
+)
+
+fig3.update_layout(
     plot_bgcolor=colors['background'],
     paper_bgcolor=colors['background'],
     font_color=colors['text']
@@ -73,6 +89,16 @@ app.layout = html.Div(style={'backgroundColor': colors['background']}, children=
     dcc.Graph(
         id='example-graph-3',
         figure=fig2
+    ),
+
+    html.Div(children='', style={
+        'textAlign': 'center',
+        'color': colors['text']
+    }),
+
+    dcc.Graph(
+        id='example-graph-4',
+        figure=fig3
     )
 ])
 
