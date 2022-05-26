@@ -16,9 +16,10 @@ colors = {
 df = pd.read_csv ('clean_block_data.csv')
 supply = pd.read_csv('supply.csv')
 halving = pd.read_csv('halvings.csv')
+header = pd.read_csv('clean_blockheader.csv')
 print(df)
 
-bitcoin_supply =[supply['issuance_remaining'][0], int(supply['total_amount'][0])]
+bitcoin_supply = [supply['issuance_remaining'][0], int(supply['total_amount'][0])]
 
 bitcoin_supply_titles = ['Issuance Remaining', 'Circulating Supply']
 
@@ -51,6 +52,10 @@ fig5.update_traces(line_color='#FF9900', line_width=3)
 fig6 = px.line(df, x="height", y="avgfee", title='Average Fee per Block',log_x=True)
 
 fig6.update_traces(line_color='#FF9900', line_width=3)
+
+fig7 = px.line(header, x="height", y="difficulty", title='Difficulty',log_x=True)
+
+fig7.update_traces(line_color='#FF9900', line_width=3)
 
 
 fig1.update_layout(
@@ -89,6 +94,13 @@ fig5.update_layout(
 )
 
 fig6.update_layout(
+    plot_bgcolor=colors['background'],
+    paper_bgcolor=colors['background'],
+    font_color=colors['text'],
+    title = dict(font_size=20)
+)
+
+fig7.update_layout(
     plot_bgcolor=colors['background'],
     paper_bgcolor=colors['background'],
     font_color=colors['text'],
@@ -173,6 +185,25 @@ app.layout = html.Div(style={'backgroundColor': colors['background'], 'marginLef
         id='example-graph-2',
         figure=fig1
     ),
+    html.H1(
+        children='Mining',
+        style={
+            'textAlign': 'center',
+            'color': colors['text'],
+            'paddingTop': 15
+        }
+    ),
+
+    html.Div(children='', style={
+        'textAlign': 'center',
+        'color': colors['text']
+    }),
+
+    dcc.Graph(
+        id='example-graph-8',
+        figure=fig7
+    )
+
 ])
 
 if __name__ == '__main__':
