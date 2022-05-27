@@ -57,6 +57,10 @@ fig7 = px.line(header, x="height", y="difficulty", title='Difficulty',log_x=True
 
 fig7.update_traces(line_color='#FF9900', line_width=3)
 
+fig8 = px.line(df, x="height", y="utxo_increase", title='UTXO increase/decrease per block',log_x=True)
+
+fig8.update_traces(line_color='#FF9900', line_width=3)
+
 
 fig1.update_layout(
     plot_bgcolor=colors['background'],
@@ -101,6 +105,13 @@ fig6.update_layout(
 )
 
 fig7.update_layout(
+    plot_bgcolor=colors['background'],
+    paper_bgcolor=colors['background'],
+    font_color=colors['text'],
+    title = dict(font_size=20)
+)
+
+fig8.update_layout(
     plot_bgcolor=colors['background'],
     paper_bgcolor=colors['background'],
     font_color=colors['text'],
@@ -202,6 +213,16 @@ app.layout = html.Div(style={'backgroundColor': colors['background'], 'marginLef
     dcc.Graph(
         id='example-graph-8',
         figure=fig7
+    ),
+
+    html.Div(children='', style={
+        'textAlign': 'center',
+        'color': colors['text']
+    }),
+
+    dcc.Graph(
+        id='example-graph-9',
+        figure=fig8
     )
 
 ])
