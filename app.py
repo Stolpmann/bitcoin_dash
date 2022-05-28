@@ -17,7 +17,6 @@ df = pd.read_csv ('clean_block_data.csv')
 supply = pd.read_csv('supply.csv')
 halving = pd.read_csv('halvings.csv')
 header = pd.read_csv('clean_blockheader.csv')
-print(df)
 
 bitcoin_supply = [supply['issuance_remaining'][0], int(supply['total_amount'][0])]
 
@@ -29,29 +28,27 @@ colors2 = ['#4D4D4D', '#FF9900']
 # see https://plotly.com/python/px-arguments/ for more options
 
 
-fig1 = px.line(df, x="height", y="avgtxsize", title='Average Transaction size in bytes')
-
-fig1.update_traces(line_color='#FF9900', line_width=3, )
-
-fig2 = px.line(halving, x="Year", y="Start BTC", title='Projected Halvings',log_x=True)
-
-fig2.update_traces(line_color='#FF9900', line_width=3)
-
-fig3 = go.Figure(data=[go.Pie(labels=bitcoin_supply_titles, values=bitcoin_supply)])
-
-fig3.update_traces(marker=dict(colors=colors2,line=dict(color='#FFFFFF', width=1)))
-
-fig4 = px.line(df, x="height", y="totalfee", title='Total Fees per Block',log_x=True)
-
-fig4.update_traces(line_color='#FF9900', line_width=3)
-
-fig5 = px.line(df, x="height", y="txs", title='Transactions per Block',log_x=True)
-
-fig5.update_traces(line_color='#FF9900', line_width=3)
-
-fig6 = px.line(df, x="height", y="avgfee", title='Average Fee per Block',log_x=True)
-
-fig6.update_traces(line_color='#FF9900', line_width=3)
+# fig1 = px.line(df, x="height", y="avgtxsize", title='Average Transaction size in bytes')
+#
+# fig1.update_traces(line_color='#FF9900', line_width=3, )
+#
+# fig2 = px.line(halving, x="Year", y="Start BTC", title='Projected Halvings',log_x=True)
+#
+# fig2.update_traces(line_color='#FF9900', line_width=3)
+#
+# fig3 = go.Figure(data=[go.Pie(labels=bitcoin_supply_titles, values=bitcoin_supply)])
+#
+# fig3.update_traces(marker=dict(colors=colors2,line=dict(color='#FFFFFF', width=1)))
+#
+# fig4 = px.line(df, x="height", y="totalfee", title='Total Fees per Block',log_x=True)
+#
+# fig4.update_traces(line_color='#FF9900', line_width=3)
+#
+# fig5 = px.line(df, x="height", y="txs", title='Transactions per Block', log_x=True)
+#
+# fig5.update_traces(line_color='#FF9900', line_width=3)
+#
+# fig6 = px.bar(df, x="height", y="avgfee", title='Average Fee per Block')
 
 fig7 = px.line(header, x="height", y="difficulty", title='Difficulty',log_x=True)
 
@@ -62,47 +59,49 @@ fig8 = px.line(df, x="height", y="utxo_increase", title='UTXO increase/decrease 
 fig8.update_traces(line_color='#FF9900', line_width=3)
 
 
-fig1.update_layout(
-    plot_bgcolor=colors['background'],
-    paper_bgcolor=colors['background'],
-    font_color=colors['text'],
-    title=dict(font_size=20)
-)
-fig2.update_layout(
-    plot_bgcolor=colors['background'],
-    paper_bgcolor=colors['background'],
-    font_color=colors['text'],
-    title = dict(font_size=20)
-
-)
-
-fig3.update_layout(
-    plot_bgcolor=colors['background'],
-    paper_bgcolor=colors['background'],
-    font_color=colors['text'],
-    title=dict(text='% of Supply Circulating', font_size=20)
-)
-
-fig4.update_layout(
-    plot_bgcolor=colors['background'],
-    paper_bgcolor=colors['background'],
-    font_color=colors['text'],
-    title = dict(font_size=20)
-)
-
-fig5.update_layout(
-    plot_bgcolor=colors['background'],
-    paper_bgcolor=colors['background'],
-    font_color=colors['text'],
-    title = dict(font_size=20)
-)
-
-fig6.update_layout(
-    plot_bgcolor=colors['background'],
-    paper_bgcolor=colors['background'],
-    font_color=colors['text'],
-    title = dict(font_size=20)
-)
+# fig1.update_layout(
+#     plot_bgcolor=colors['background'],
+#     paper_bgcolor=colors['background'],
+#     font_color=colors['text'],
+#     title=dict(font_size=20)
+# )
+#
+#
+# fig2.update_layout(
+#     plot_bgcolor=colors['background'],
+#     paper_bgcolor=colors['background'],
+#     font_color=colors['text'],
+#     title = dict(font_size=20)
+#
+# )
+#
+# fig3.update_layout(
+#     plot_bgcolor=colors['background'],
+#     paper_bgcolor=colors['background'],
+#     font_color=colors['text'],
+#     title=dict(text='% of Supply Circulating', font_size=20)
+# )
+#
+# fig4.update_layout(
+#     plot_bgcolor=colors['background'],
+#     paper_bgcolor=colors['background'],
+#     font_color=colors['text'],
+#     title = dict(font_size=20)
+# )
+#
+# fig5.update_layout(
+#     plot_bgcolor=colors['background'],
+#     paper_bgcolor=colors['background'],
+#     font_color=colors['text'],
+#     title = dict(font_size=20)
+# )
+#
+# fig6.update_layout(
+#     plot_bgcolor=colors['background'],
+#     paper_bgcolor=colors['background'],
+#     font_color=colors['text'],
+#     title = dict(font_size=20)
+# )
 
 fig7.update_layout(
     plot_bgcolor=colors['background'],
@@ -128,74 +127,74 @@ app.layout = html.Div(style={'backgroundColor': colors['background'], 'marginLef
         }
     ),
 
-    html.H1(
-        children='Supply',
-        style={
-            'textAlign': 'center',
-            'color': colors['text'],
-            'paddingTop': 15
-        }
-    ),
-
-    html.Div(children='', style={
-        'textAlign': 'center',
-        'color': colors['text']
-    }),
-
-    dcc.Graph(
-        id='example-graph-3',
-        figure=fig2
-    ),
-
-
-    html.Div(
-        children='',
-        style={
-            'textAlign': 'center',
-            'color': colors['text'],
-            'paddingTop': -30
-    }),
-
-    dcc.Graph(
-        id='example-graph-4',
-        figure=fig3,
-    ),
-    html.Div(children='',
-             style={'textAlign': 'center',
-        'color': colors['text']
-    }),
-
-    dcc.Graph(
-        id='example-graph-5',
-        figure=fig4
-    ),
-    html.Div(children='',
-             style={'textAlign': 'center',
-                    'color': colors['text']
-                    }),
-
-    dcc.Graph(
-        id='example-graph-6',
-        figure=fig5
-    ),
-    html.Div(children='',
-             style={'textAlign': 'center',
-                    'color': colors['text']
-                    }),
-
-    dcc.Graph(
-        id='example-graph-7',
-        figure=fig6
-    ),
-    html.Div(children='', style={
-        'textAlign': 'center',
-        'color': colors['text']
-    }),
-
-    dcc.Graph(
-        id='example-graph-2',
-        figure=fig1
-    ),
+    # html.H1(
+    #     children='Supply',
+    #     style={
+    #         'textAlign': 'center',
+    #         'color': colors['text'],
+    #         'paddingTop': 15
+    #     }
+    # ),
+    #
+    # html.Div(children='', style={
+    #     'textAlign': 'center',
+    #     'color': colors['text']
+    # }),
+    #
+    # dcc.Graph(
+    #     id='example-graph-3',
+    #     figure=fig2
+    # ),
+    #
+    #
+    # html.Div(
+    #     children='',
+    #     style={
+    #         'textAlign': 'center',
+    #         'color': colors['text'],
+    #         'paddingTop': -30
+    # }),
+    #
+    # dcc.Graph(
+    #     id='example-graph-4',
+    #     figure=fig3,
+    # ),
+    # html.Div(children='',
+    #          style={'textAlign': 'center',
+    #     'color': colors['text']
+    # }),
+    #
+    # dcc.Graph(
+    #     id='example-graph-5',
+    #     figure=fig4
+    # ),
+    # html.Div(children='',
+    #          style={'textAlign': 'center',
+    #                 'color': colors['text']
+    #                 }),
+    #
+    # dcc.Graph(
+    #     id='example-graph-6',
+    #     figure=fig5
+    # ),
+    # html.Div(children='',
+    #          style={'textAlign': 'center',
+    #                 'color': colors['text']
+    #                 }),
+    #
+    # dcc.Graph(
+    #     id='example-graph-7',
+    #     figure=fig6
+    # ),
+    # html.Div(children='', style={
+    #     'textAlign': 'center',
+    #     'color': colors['text']
+    # }),
+    # 
+    # dcc.Graph(
+    #     id='example-graph-2',
+    #     figure=fig1
+    # ),
     html.H1(
         children='Mining',
         style={
