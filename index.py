@@ -19,8 +19,6 @@ header = dbc.Row(
     dbc.Col(
         html.Div(
             [
-                html.H2(children="Bitcoin Dashboard"),
-                html.H3(children="A Visualization of Historical Data"),
             ]
         )
     ),
