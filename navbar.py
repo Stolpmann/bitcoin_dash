@@ -18,6 +18,7 @@ def Navbar():
                         ],
                         align="center",
                         className="g-0",
+
                     ),
                     href="https://plotly.com",
                     style={"textDecoration": "none"},
@@ -25,7 +26,8 @@ def Navbar():
                 dbc.NavbarToggler(id="navbar-toggler", n_clicks=0),
             ]
         ),
-        color="#011936",
+        color="",
         dark=True,
+        style={"padding": "25px 25px 25px 25px"}
     )
     return navbar

@@ -6,6 +6,10 @@ clean_block_data = pd.read_csv('clean_block_data.csv')
 
 supply = pd.read_csv('supply.csv')
 
+hash = pd.read_csv('data/networkhashps.csv')
+
+supply_clean = pd.read_csv('data/supply_clean.csv')
+
 supply_t = supply.transpose()
 
 supply_t.rename({'0': 'details', '1': 'stats'}, axis=1, inplace=True)
