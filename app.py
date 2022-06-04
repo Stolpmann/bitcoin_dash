@@ -4,7 +4,8 @@
 import dash
 import dash_bootstrap_components as dbc
 
-
+# Initialize Dash App
+# Add external bootstrap style sheet
 app = dash.Dash(
     __name__,
     external_stylesheets=[dbc.themes.SUPERHERO]

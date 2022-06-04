@@ -4,6 +4,8 @@ from data import clean_block_data,supply_clean,hash,bitcoin_supply_titles,bitcoi
 import plotly.express as px
 import plotly.graph_objects as go
 
+
+# Initialize colours
 colors = {
     'background': '#15202b',
     'text': '#FF9900'
@@ -11,6 +13,7 @@ colors = {
 colors2 = ['#4D4D4D', '#FF9900']
 
 
+# hashrate chart
 hashrate = px.bar(hash, x=hash.index, y="0", barmode="group", title="Hsshrate Average per Block ")
 
 hashrate.update_layout(
@@ -20,6 +23,7 @@ hashrate.update_layout(
 )
 
 
+# difficulty chart
 difficulty = px.line(header, x="height", y="difficulty", title='Difficuly in TH/s')
 
 difficulty.update_layout(
@@ -29,6 +33,7 @@ difficulty.update_layout(
 )
 
 
+# supply chart
 supply = go.Figure(data=[go.Pie(labels=bitcoin_supply_titles, values=bitcoin_supply, title='Supply')])
 
 supply.update_traces(marker=dict(colors=colors2,line=dict(color='#FFFFFF', width=1)), title=dict(position='top left'))
@@ -39,6 +44,8 @@ supply.update_layout(
     font_color='white',
 )
 
+
+# Initialize Timechain Layout
 
 timechainLayout = html.Div(children=[
     dbc.Row(

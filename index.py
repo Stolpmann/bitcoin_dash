@@ -2,19 +2,17 @@ import os
 import pandas as pd
 from data import *
 from dash import html, dcc
-
-# Dash Bootstrap components
 import dash_bootstrap_components as dbc
 from layouts import *
-
-# Import app
 from app import app
+
+# import navbar & call function
 from navbar import Navbar
-
-
 
 nav = Navbar()
 
+
+# Initialize Header
 header = dbc.Row(
     dbc.Col(
         html.Div(
@@ -26,6 +24,7 @@ header = dbc.Row(
 )
 
 
+# Index function calls layouts
 def index():
     layout = html.Div(children=[
         nav, header, timechainLayout
