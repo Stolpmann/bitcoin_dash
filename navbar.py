@@ -4,6 +4,7 @@ from dash import dcc, html, dash_table
 import dash_bootstrap_components as dbc
 
 
+
 # Navigation Bar function
 def Navbar():
     navbar = dbc.Navbar(
@@ -23,16 +24,19 @@ def Navbar():
                     href="https://plotly.com",
                     style={"textDecoration": "none"},
                 ),
+
+
                 dbc.NavbarToggler(id="navbar-toggler", n_clicks=0),
-                dbc.NavItem(dbc.NavLink("Mining", href="#")),
-                dbc.NavItem(dbc.NavLink("Timechain", href="#")),
-                dbc.NavItem(dbc.NavLink("Mempool", href="#")),
-                dbc.NavItem(dbc.NavLink("Economics", href="#")),
+                dbc.NavItem(dbc.NavLink("Mining", href="#", className="app-header")),
+                dbc.NavItem(dbc.NavLink("Timechain", href="#", className="app-header")),
+                dbc.NavItem(dbc.NavLink("Mempool", href="#", className="app-header")),
+                dbc.NavItem(dbc.NavLink("Economics", href="#", className="app-header")),
+
 
             ]
         ),
         color="",
         dark=True,
-        style={"padding": "25px 25px 25px 25px"}
+        style={"padding": "25px 25px 50px 25px", "text-color": "white"}
     )
     return navbar
