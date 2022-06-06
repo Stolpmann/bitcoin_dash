@@ -20,5 +20,8 @@ bitcoin_supply_titles = ['Issuance Remaining', 'Circulating Supply']
 
 clean_block_data = pd.read_csv('clean_block_data.csv')
 
+utxo = pd.read_csv('data/utxo_cumulative.csv')
 
+output_type = ['Pubkey Hash', 'Script Hash', 'SegWit v0 Pubkey Hash', 'SegWit v0 Script Hash']
 
+output_type_data = [supply['Issuance Remaining'][0], int(supply['Circulating Supply'][0])]
