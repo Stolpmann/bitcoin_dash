@@ -27,7 +27,7 @@ header = dbc.Row(
 # Index function calls layouts
 def index():
     layout = html.Div(children=[
-        nav, header, timechainLayout
+        nav, header, timechainLayout, miningLayout
     ])
 
     return layout

@@ -1,5 +1,5 @@
 import pandas as pd
-
+import numpy as np
 # Mining View Data
 
 supply = pd.read_csv('data/supply_pie_data.csv')
@@ -19,9 +19,15 @@ bitcoin_supply_titles = ['Issuance Remaining', 'Circulating Supply']
 # Timechain View Data
 
 clean_block_data = pd.read_csv('clean_block_data.csv')
-
+utxo = clean_block_data['utxo_increase']
+utxo_cumulative = utxo.cumsum()
+utxo_cumulative.to_csv("data/utxo_cumulative.csv")
 utxo = pd.read_csv('data/utxo_cumulative.csv')
 
-output_type = ['Pubkey Hash', 'Script Hash', 'SegWit v0 Pubkey Hash', 'SegWit v0 Script Hash']
+output_type = ['Pubkey/Script Hash', 'SegWit Hash']
 
-output_type_data = [supply['Issuance Remaining'][0], int(supply['Circulating Supply'][0])]
+nonsw_txs = clean_block_data['txs'] - clean_block_data['swtxs']
+sum_nonsw_txs = np.sum(nonsw_txs)
+sum_sw_txs = np.sum(clean_block_data['swtxs'])
+
+output_type_data = [sum_nonsw_txs, sum_sw_txs]
