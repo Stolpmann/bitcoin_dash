@@ -237,3 +237,47 @@ timechainLayout = html.Div(children=[
         ],
     ),
 ])
+
+
+
+# Initialize mempool Layout
+
+mempoolLayout = html.Div(children=[
+    dbc.Row(
+        [
+            dbc.Col(html.Div(dcc.Graph(id='utxo_chart',
+                                       figure=utxo
+                                        ),),
+                    width=7,
+                    style={"padding-left": "10px", "border-style": "solid"},
+
+                    ),
+            dbc.Col(html.Div(dcc.Graph(id='tx_type_chart',
+                                       figure=tx_type
+                                       ), ),
+                    width=5,
+                    style={"padding-left": "5px", "border-style": "solid"},
+                    ),
+
+
+        ]
+    ),
+    dbc.Row(
+        [
+            dbc.Col(html.Div(dcc.Graph(id='throughput',
+                                       figure=tx_throughput
+                                        ),),
+                    width=6,
+                    style={"padding-left": "20px", "border-style": "solid"},
+
+                    ),
+            dbc.Col(html.Div(dcc.Graph(id='example-graph11',
+                                       figure=blockweight
+                                        ),),
+                    width=6,
+                    style={"padding-left": "5px", "border-style": "solid"},
+
+                    ),
+        ],
+    ),
+])
