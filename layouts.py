@@ -242,42 +242,27 @@ timechainLayout = html.Div(children=[
 
 # Initialize mempool Layout
 
+fees = px.line(fees_data, x="time", y='sats/vbyte', title='Block Weight')
+
+fees.update_layout(
+    plot_bgcolor='rgba(0,0,0,0)',
+    paper_bgcolor='rgba(0,0,0,0)',
+    font_color='white',
+)
+
+fees.update_traces(line=dict(color='orange'))
+
 mempoolLayout = html.Div(children=[
     dbc.Row(
         [
-            dbc.Col(html.Div(dcc.Graph(id='utxo_chart',
-                                       figure=utxo
+            dbc.Col(html.Div(dcc.Graph(id='fee_chart',
+                                       figure=fees
                                         ),),
-                    width=7,
+                    width=12,
                     style={"padding-left": "10px", "border-style": "solid"},
 
                     ),
-            dbc.Col(html.Div(dcc.Graph(id='tx_type_chart',
-                                       figure=tx_type
-                                       ), ),
-                    width=5,
-                    style={"padding-left": "5px", "border-style": "solid"},
-                    ),
-
 
         ]
-    ),
-    dbc.Row(
-        [
-            dbc.Col(html.Div(dcc.Graph(id='throughput',
-                                       figure=tx_throughput
-                                        ),),
-                    width=6,
-                    style={"padding-left": "20px", "border-style": "solid"},
-
-                    ),
-            dbc.Col(html.Div(dcc.Graph(id='example-graph11',
-                                       figure=blockweight
-                                        ),),
-                    width=6,
-                    style={"padding-left": "5px", "border-style": "solid"},
-
-                    ),
-        ],
     ),
 ])

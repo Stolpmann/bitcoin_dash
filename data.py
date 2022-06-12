@@ -31,3 +31,7 @@ sum_nonsw_txs = np.sum(nonsw_txs)
 sum_sw_txs = np.sum(clean_block_data['swtxs'])
 
 output_type_data = [sum_nonsw_txs, sum_sw_txs]
+
+# mempoolLayout Data
+
+fees_data = pd.read_csv('data/memdata_clean.csv')
