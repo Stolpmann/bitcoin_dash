@@ -242,7 +242,23 @@ timechainLayout = html.Div(children=[
 
 # Initialize mempool Layout
 
-fees = px.line(fees_data, x="time", y='sats/vbyte', title='Block Weight')
+
+fees = go.Figure()
+#
+# fees.add_trace(go.Scatter(
+#     name = 'Data 1',
+#     x = fees_data['time'],
+#     y = one,
+#     stackgroup='one'
+#    ))
+#
+# fees.add_trace(go.Scatter(
+#     name = 'Data 2',
+#     x=fees_data['time'],
+#     y = two,
+#     stackgroup='one'
+#    )
+# )
 
 fees.update_layout(
     plot_bgcolor='rgba(0,0,0,0)',

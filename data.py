@@ -35,3 +35,4 @@ output_type_data = [sum_nonsw_txs, sum_sw_txs]
 # mempoolLayout Data
 
 fees_data = pd.read_csv('data/memdata_clean.csv')
+
