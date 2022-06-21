@@ -243,7 +243,7 @@ timechainLayout = html.Div(children=[
 # Initialize mempool Layout
 
 
-fees = go.Figure()
+# fees = go.Figure()
 #
 # fees.add_trace(go.Scatter(
 #     name = 'Data 1',
@@ -259,26 +259,26 @@ fees = go.Figure()
 #     stackgroup='one'
 #    )
 # )
-
-fees.update_layout(
-    plot_bgcolor='rgba(0,0,0,0)',
-    paper_bgcolor='rgba(0,0,0,0)',
-    font_color='white',
-)
-
-fees.update_traces(line=dict(color='orange'))
-
-mempoolLayout = html.Div(children=[
-    dbc.Row(
-        [
-            dbc.Col(html.Div(dcc.Graph(id='fee_chart',
-                                       figure=fees
-                                        ),),
-                    width=12,
-                    style={"padding-left": "10px", "border-style": "solid"},
-
-                    ),
-
-        ]
-    ),
-])
+#
+# fees.update_layout(
+#     plot_bgcolor='rgba(0,0,0,0)',
+#     paper_bgcolor='rgba(0,0,0,0)',
+#     font_color='white',
+# )
+#
+# fees.update_traces(line=dict(color='orange'))
+#
+# mempoolLayout = html.Div(children=[
+#     dbc.Row(
+#         [
+#             dbc.Col(html.Div(dcc.Graph(id='fee_chart',
+#                                        figure=fees
+#                                         ),),
+#                     width=12,
+#                     style={"padding-left": "10px", "border-style": "solid"},
+#
+#                     ),
+#
+#         ]
+#     ),
+# ])
